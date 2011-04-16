@@ -1,0 +1,8 @@
+There is alot of commented out code in this plugin. That is mostly because alot of that code is server output that I use for debugging.
+Other parts are features I am thinking of including but haven't yet because they don't work or wouldn't be accepted well by the Bukkit community.
+
+I really don't know what a README is supposed to contain. I thought instructions of installation but this is a really easy install. 
+Just take the .jar out of the .zip and put it in your plugins. Configuration auto-configs but you need to add new worlds when you add them 
+or manually reset the config. 
+
+Have fun!
