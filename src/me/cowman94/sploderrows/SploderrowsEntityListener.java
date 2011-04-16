@@ -85,14 +85,14 @@ public class SploderrowsEntityListener extends EntityListener {
     }
     
     public void onEntityCombust(EntityCombustEvent event){
-		/*
+		
 		if (event.getEntity() instanceof Creeper){
 			Location loc = event.getEntity().getLocation();
 		
 		World world = ((CraftWorld)event.getEntity().getWorld()).getHandle(); 
 		world.a(null, loc.getX(), loc.getY(), loc.getZ(), 3F);
 		}
-		*/
+		
     }
 }
 

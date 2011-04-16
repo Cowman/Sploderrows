@@ -33,7 +33,6 @@ public class SploderrowsSplode {
 		World world = ((CraftWorld)and.arrow.getWorld()).getHandle(); 
 		Location loc = and.arrow.getLocation();
 		for (int j=0;j<8;j++){
-			world.a("snowballpoof", x, y + 0.5D, z, 0.0D, 0.0D, 0.0D);
 			world.a(x, y + 0.5D, z, "random.fuse", 1.0F, 0.5F);
 		}
 	}

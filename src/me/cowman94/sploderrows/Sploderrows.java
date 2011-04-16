@@ -35,7 +35,6 @@ public class Sploderrows extends JavaPlugin{
 	public final SploderrowsArrowControl arrowControl = new SploderrowsArrowControl(this);
 	public final SploderrowsSplode sploder = new SploderrowsSplode(this);
 	public final HashMap<Player,ArrayList<Block>> sploderrowsUsers = new HashMap<Player, ArrayList<Block>>();
-	private final HashMap<Player, Boolean> debugees = new HashMap<Player, Boolean>();
 	private final HashMap<Player, Boolean> instaUsers = new HashMap<Player, Boolean>();
 	Configuration config;
 	public static Sploderrows sploderrows;
@@ -127,19 +126,13 @@ public class Sploderrows extends JavaPlugin{
         pm.registerEvent(Event.Type.ENTITY_DEATH, entityListener, Event.Priority.Normal, this);
         pm.registerEvent(Event.Type.PLAYER_COMMAND_PREPROCESS, playerListener, Event.Priority.Normal, this);
         pm.registerEvent(Event.Type.PLAYER_ITEM_HELD, playerListener, Event.Priority.Normal, this);
-        log.info("Sploderrows v 0.5 is on");
+        log.info("Sploderrows v 0.8 is on");
         sploderrows = this;
-        
-        System.out.println(config.getInt("world.splodebow", -1));
-        System.out.println(config.getInt("world.firebow", 100000));
-        System.out.println(config.getInt("world.splodecost", 202020220));
-        
-        System.out.println(this.getServer().getWorld("world").getTime());
         long delay = 20L; // 20 ticks = 1 second
         getServer().getScheduler().scheduleSyncRepeatingTask(this, new SAThread(), 0L, 5L);
 	}
 	public void onDisable(){
-		log.info("Sploderrows v 0.5 is off");
+		log.info("Sploderrows v 0.8 is off");
 		}
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){
 		if(commandLabel.equalsIgnoreCase("splode")){
@@ -242,13 +235,11 @@ public class Sploderrows extends JavaPlugin{
 	}
 
 	public void toggleSploderrows(Player player){
-		if(enabled(player) || isDebugging(player)){
+		if(enabled(player)){
 			this.sploderrowsUsers.remove(player);
-			this.debugees.remove(player);
 			player.sendMessage("Sploderrows Disabled");
 		}else{
 			this.sploderrowsUsers.put(player, null);
-			this.debugees.put(player, null);
 			player.sendMessage("Sploderrows Enabled");
 		}
 	}
@@ -256,13 +247,6 @@ public class Sploderrows extends JavaPlugin{
 		return this.sploderrowsUsers.containsKey(player);
 	}
 	
-    public boolean isDebugging(final Player player) {
-        if (debugees.containsKey(player)) {
-            return debugees.get(player);
-        } else {
-            return false;
-        }
-    }
     
     public boolean godly(final Player player) {
         if (instaUsers.containsKey(player)) {
@@ -272,9 +256,6 @@ public class Sploderrows extends JavaPlugin{
         }
     }
 
-    public void setDebugging(final Player player, final boolean value) {
-        debugees.put(player, value);
-    }
     
     
     public boolean deductArrows(Player player, int amount){
