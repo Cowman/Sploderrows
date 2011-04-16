@@ -21,7 +21,7 @@ setBlockOnFire = block;
 lastPostion = p.getLocation();
 waitTillNextCall = true;
 tactical = owner.isSneaking();
-System.out.println(a.getEntityId());
+//System.out.println(a.getEntityId());
 if (block){a.setFireTicks(600);}
 plugin.arrowControl.addArrow(this, block);
 

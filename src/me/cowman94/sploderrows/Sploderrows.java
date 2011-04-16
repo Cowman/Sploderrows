@@ -30,7 +30,7 @@ import java.util.List;
 public class Sploderrows extends JavaPlugin{
 	private final SploderrowsEntityListener entityListener = new SploderrowsEntityListener(this);
 	private static final Logger log = Logger.getLogger("Minecraft");
-	private final SploderrowsBlockListener blockListener = new SploderrowsBlockListener(this);
+	//private final SploderrowsBlockListener blockListener = new SploderrowsBlockListener(this);
 	private final SploderrowsPlayerListener playerListener = new SploderrowsPlayerListener(this);
 	public final SploderrowsArrowControl arrowControl = new SploderrowsArrowControl(this);
 	public final SploderrowsSplode sploder = new SploderrowsSplode(this);
@@ -85,7 +85,7 @@ public class Sploderrows extends JavaPlugin{
         config.load();
         markedForReset = testConfig();
         if (markedForReset){
-        	(caller).sendMessage("Incorrect syntax in ");
+        	(caller).sendMessage("Incorrect syntax in config. Please /splode reset");
         }
        }
            
@@ -112,27 +112,27 @@ public class Sploderrows extends JavaPlugin{
 	public void onEnable(){
 		readConfig();
 		PluginManager pm = getServer().getPluginManager();
-		pm.registerEvent(Event.Type.BLOCK_BREAK, blockListener, Event.Priority.Normal, this);
+		//pm.registerEvent(Event.Type.BLOCK_BREAK, blockListener, Event.Priority.Normal, this);
 		pm.registerEvent(Event.Type.PLAYER_INTERACT, playerListener, Event.Priority.Normal, this);
         pm.registerEvent(Event.Type.PLAYER_JOIN, playerListener, Event.Priority.Normal, this);
         pm.registerEvent(Event.Type.PLAYER_MOVE, playerListener, Event.Priority.Normal, this);
         pm.registerEvent(Event.Type.PLAYER_QUIT, playerListener, Event.Priority.Normal, this);
         pm.registerEvent(Event.Type.PLAYER_PICKUP_ITEM, playerListener, Event.Priority.Normal, this);
-        pm.registerEvent(Event.Type.BLOCK_PHYSICS, blockListener, Event.Priority.Normal, this);
-        pm.registerEvent(Event.Type.BLOCK_CANBUILD, blockListener, Event.Priority.Normal, this);
-        pm.registerEvent(Event.Type.BLOCK_DAMAGE, blockListener, Event.Priority.Normal, this);
+        //pm.registerEvent(Event.Type.BLOCK_PHYSICS, blockListener, Event.Priority.Normal, this);
+        //pm.registerEvent(Event.Type.BLOCK_CANBUILD, blockListener, Event.Priority.Normal, this);
+        //pm.registerEvent(Event.Type.BLOCK_DAMAGE, blockListener, Event.Priority.Normal, this);
         pm.registerEvent(Event.Type.ENTITY_DAMAGE, entityListener, Event.Priority.Normal, this);
         pm.registerEvent(Event.Type.ENTITY_COMBUST, entityListener, Event.Priority.Normal, this);
         pm.registerEvent(Event.Type.ENTITY_DEATH, entityListener, Event.Priority.Normal, this);
         pm.registerEvent(Event.Type.PLAYER_COMMAND_PREPROCESS, playerListener, Event.Priority.Normal, this);
         pm.registerEvent(Event.Type.PLAYER_ITEM_HELD, playerListener, Event.Priority.Normal, this);
-        log.info("Sploderrows v 0.8 is on");
+        log.info("Sploderrows v 1.0 is on");
         sploderrows = this;
         long delay = 20L; // 20 ticks = 1 second
         getServer().getScheduler().scheduleSyncRepeatingTask(this, new SAThread(), 0L, 5L);
 	}
 	public void onDisable(){
-		log.info("Sploderrows v 0.8 is off");
+		log.info("Sploderrows v 1.0 is off");
 		}
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){
 		if(commandLabel.equalsIgnoreCase("splode")){
@@ -386,7 +386,7 @@ public class Sploderrows extends JavaPlugin{
             //Close the output stream
             out.close();
             }catch (Exception e){//Catch exception if any
-            System.out.println("Sploderrows could not write the default config file.");
+            System.out.println("Sploderrows could not rewrite the config file.");
             }
     }
 }

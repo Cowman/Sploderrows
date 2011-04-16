@@ -70,7 +70,9 @@ public HashMap<Integer, Boolean> rows = new HashMap<Integer, Boolean>();
     		for (int i=0;i < arrows.size();i++){
     			SploderrowsArrows a = arrows.get(i);
     			if(!a.waitTillNextCall) {
+    				
     				Location curLoc = a.arrow.getLocation();
+    				plugin.sploder.smokeArrow(a, curLoc.getX(), curLoc.getY(), curLoc.getZ());
     				if (a.arrow.isDead()){remarrows.add(a);}
     				//plugin.sploder.smokeArrow(a, curLoc.getX(), curLoc.getY(), curLoc.getZ());
     				if(((curLoc.equals(a.lastPostion) && !a.lastPostion.equals(a.owner.getLocation())&& !a.arrow.isDead()) || (tactical && play == a.owner && plugin.getBool(a.owner.getWorld(), "midAir")))  && rows.get(a.arrow.getEntityId()) ) {

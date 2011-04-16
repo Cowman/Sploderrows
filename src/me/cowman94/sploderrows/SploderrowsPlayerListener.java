@@ -34,11 +34,6 @@ import com.earth2me.essentials.Essentials;
 import com.earth2me.essentials.User;
 
 
-
-/**
-* Handle events for all Player related events
-* @author Cowman94
-*/
 public class SploderrowsPlayerListener extends PlayerListener {
     private final Sploderrows plugin;
 
@@ -47,11 +42,11 @@ public class SploderrowsPlayerListener extends PlayerListener {
     }
 
     public void onPlayerJoin(PlayerJoinEvent event) {
-        System.out.println(event.getPlayer().getName() + " joined the server! :D" + event.getPlayer().getWorld().getName());
+        //System.out.println(event.getPlayer().getName() + " joined the server! :D" + event.getPlayer().getWorld().getName());
     }
 
     public void onPlayerQuit(PlayerQuitEvent event){
-        System.out.println(event.getPlayer().getName() + " left the server! :'(");
+        //System.out.println(event.getPlayer().getName() + " left the server! :'(");
     }
     
     public void onPlayerInteract(PlayerInteractEvent event){
@@ -64,27 +59,25 @@ public class SploderrowsPlayerListener extends PlayerListener {
     	BlockFace blockFace = event.getBlockFace();
     	ItemStack item = event.getItem();
     	Material splodeBow = Material.getMaterial(plugin.getInt(player.getWorld().getName() + ".splodebow"));
-    	System.out.println(plugin.getInt(player.getWorld().getName() + ".splodebow"));
+    	//System.out.println(plugin.getInt(player.getWorld().getName() + ".splodebow"));
     	Material fireBow = Material.getMaterial(plugin.getInt(player, "firebow"));
     	if (action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK){
     		try{
     		if (item.getType() == splodeBow){
     			if (plugin.deductArrows(player, plugin.getInt(player.getWorld(), "splodecost"))){
     				new SploderrowsArrows(player, player.shootArrow(), false, plugin);
-    				player.sendMessage(ChatColor.RED + "Pwang!");
+    				//player.sendMessage(ChatColor.RED + "Pwang!");
     				player.updateInventory();
     			}
     		}
 			if (item.getType() == fireBow){
 				if (plugin.deductArrows(player, plugin.getInt(player.getWorld(), "firecost"))){
 					new SploderrowsArrows(player, player.shootArrow(), true, plugin);
-					player.sendMessage(ChatColor.RED + "Pwing!");
+					//player.sendMessage(ChatColor.RED + "Pwing!");
 					player.updateInventory();
 				}
 			}
-    		} catch (Exception ex) {
-    			System.out.println("SOMETHING FUCKED UP");
-            } 
+    		} catch (Exception ex) {            } 
     	}
     	if (action == Action.LEFT_CLICK_AIR || action == Action.LEFT_CLICK_BLOCK){
     		try{
