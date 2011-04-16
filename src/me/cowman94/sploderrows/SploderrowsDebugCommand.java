@@ -6,10 +6,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-/**
-* Handler for the /debug sample command.
-* @author SpaceManiac
-*/
+
 public class SploderrowsDebugCommand implements CommandExecutor {
     private final Sploderrows plugin;
 
