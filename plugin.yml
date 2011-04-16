@@ -1,0 +1,11 @@
+author: cowman94
+name: Sploderrows
+main: me.cowman94.sploderrows.Sploderrows
+version: 0.8
+commands:
+  splode:
+        description: Sploderrows commands
+        usage: /splode [command] (help for help)
+  inst:
+        description: Instantly Break Blocks.
+        usage: /inst
